@@ -1,0 +1,39 @@
+{
+  "n": 20,
+  "accuracy": 0.95,
+  "macro_f1": 0.4872,
+  "scam_f1": 0.9744,
+  "per_language_macro_f1": {
+    "en": 1.0,
+    "pcm": 0.4444,
+    "yo": 1.0,
+    "ig": 1.0,
+    "ha": 1.0
+  },
+  "model": "Zero-shot openai/gpt-oss-120b (Groq)",
+  "partial": true,
+  "scored": 20,
+  "of": 40,
+  "subset_ids": [
+    "ch-000",
+    "ch-001",
+    "ch-002",
+    "ch-003",
+    "ch-004",
+    "ch-005",
+    "ch-006",
+    "ch-007",
+    "ch-008",
+    "ch-009",
+    "ch-010",
+    "ch-011",
+    "ch-012",
+    "ch-013",
+    "ch-014",
+    "ch-015",
+    "ch-016",
+    "ch-017",
+    "ch-018",
+    "ch-019"
+  ]
+}

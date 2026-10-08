@@ -1,0 +1,14 @@
+{
+  "n": 40,
+  "accuracy": 0.6,
+  "macro_f1": 0.5908,
+  "scam_f1": 0.5294,
+  "per_language_macro_f1": {
+    "en": 0.7442,
+    "pcm": 0.4667,
+    "yo": 0.3333,
+    "ig": 0.3333,
+    "ha": 0.2
+  },
+  "model": "Rules only"
+}

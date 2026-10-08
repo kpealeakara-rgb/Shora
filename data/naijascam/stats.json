@@ -1,0 +1,73 @@
+{
+  "raw": 1870,
+  "final": 1821,
+  "drops": {
+    "relabel_ig_to_en": 6,
+    "relabel_pcm_to_en": 118,
+    "relabel_yo_to_en": 1,
+    "scam_no_flags": 13,
+    "legit_noise": 35,
+    "near_dup": 1
+  },
+  "splits": {
+    "train": 1274,
+    "validation": 182,
+    "test": 365
+  },
+  "label": {
+    "scam": 982,
+    "legit": 839
+  },
+  "language": {
+    "en": 747,
+    "ha": 207,
+    "ig": 199,
+    "pcm": 465,
+    "yo": 203
+  },
+  "scam_type": {
+    "bank_impersonation_otp": 114,
+    "fake_credit_alert": 111,
+    "fake_job_visa_scholarship": 110,
+    "fake_vendor_pos": 108,
+    "giveaway_grant": 110,
+    "legit_bank_alert": 107,
+    "legit_business_vendor": 106,
+    "legit_delivery": 103,
+    "legit_family_chat": 106,
+    "legit_otp": 109,
+    "legit_school_remita": 102,
+    "legit_security_advisory": 102,
+    "legit_telco_utility": 104,
+    "loan_app_extortion": 110,
+    "ponzi_crypto": 111,
+    "romance_yahoo": 109,
+    "sim_swap": 99
+  },
+  "source": {
+    "synthetic": 1785,
+    "seed": 36
+  },
+  "label_by_language": {
+    "en": {
+      "scam": 424,
+      "legit": 323
+    },
+    "pcm": {
+      "scam": 234,
+      "legit": 231
+    },
+    "yo": {
+      "scam": 109,
+      "legit": 94
+    },
+    "ig": {
+      "scam": 104,
+      "legit": 95
+    },
+    "ha": {
+      "scam": 111,
+      "legit": 96
+    }
+  }
+}

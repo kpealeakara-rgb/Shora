@@ -1,0 +1,17 @@
+{
+  "n": 40,
+  "accuracy": 0.675,
+  "macro_f1": 0.6366,
+  "scam_f1": 0.5185,
+  "per_language_macro_f1": {
+    "en": 0.6429,
+    "pcm": 0.619,
+    "yo": 0.7333,
+    "ig": 0.7333,
+    "ha": 0.3333
+  },
+  "model": "afro-xlmr-mini fine-tuned (frozen embeddings)",
+  "epochs": 3,
+  "ms_per_message_cpu": 19.3,
+  "train_seconds_total": 519.1
+}

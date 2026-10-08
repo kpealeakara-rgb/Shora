@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "shora"
+version = "0.1.0"
+description = "Ṣọ́ra: multilingual Nigerian scam shield (English, Pidgin, Yoruba, Igbo, Hausa)"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Akara Kpeale" }]
+requires-python = ">=3.10"
+dependencies = ["scikit-learn>=1.3", "numpy>=1.24", "joblib>=1.3", "requests>=2.31"]
+keywords = ["scam-detection", "fraud", "nigeria", "nlp", "african-languages", "pidgin", "yoruba", "igbo", "hausa"]
+
+[project.optional-dependencies]
+app = ["gradio>=4.44"]
+train = ["torch>=2.2", "transformers>=4.40"]
+dev = ["pytest>=7"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

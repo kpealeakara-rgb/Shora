@@ -1,0 +1,15 @@
+{
+  "n": 365,
+  "accuracy": 0.7205,
+  "macro_f1": 0.7205,
+  "scam_f1": 0.7182,
+  "per_language_macro_f1": {
+    "en": 0.7261,
+    "pcm": 0.7095,
+    "yo": 0.7211,
+    "ig": 0.7749,
+    "ha": 0.6567
+  },
+  "model": "Rules only (regex red flags)",
+  "threshold": 0.05
+}

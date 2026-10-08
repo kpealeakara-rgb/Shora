@@ -1,0 +1,19 @@
+{
+  "n": 365,
+  "accuracy": 0.9781,
+  "macro_f1": 0.9779,
+  "scam_f1": 0.9798,
+  "per_language_macro_f1": {
+    "en": 0.9591,
+    "pcm": 0.9785,
+    "yo": 1.0,
+    "ig": 1.0,
+    "ha": 1.0
+  },
+  "scam_type_accuracy": 0.8932,
+  "scam_type_macro_f1": 0.8943,
+  "model": "TF-IDF (word+char) + LogReg",
+  "C": 4,
+  "train_seconds": 3.1,
+  "ms_per_message_cpu": 0.47
+}

@@ -1,0 +1,18 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+.pytest_cache/
+.ipynb_checkpoints/
+# large / local-only model files (keep tfidf-logreg, it is ~4 MB)
+models/hf/
+models/afro-xlmr-mini-naijascam/
+*.pt
+*.bin
+*.safetensors
+# gradio
+flagged/
+.gradio/
+data/raw/jobs/
+space/
