@@ -16,3 +16,13 @@
 - App: Gradio app tested locally (function calls + server launch + gradio_client API call). LLM explanation path worked once before the quota ran out; offline fallback verified.
 - pytest: 9 passed. Space bundle verified via scripts/prepare_space.sh.
 - GitHub: `repo_create` returned **403 "Resource not accessible by integration"** — the Hark GitHub integration cannot create repositories. Git over HTTPS works for repos it can access. Committed locally; ready to push once the empty private repo `shora` exists.
+- 2026-10-08 23:30 WAT — Gradio Spaces now return **402 (HF PRO required)**, so built a free **static** Space instead.
+  `scripts/export_static.py` exports the shipped TF-IDF+LogReg heads (shared vocab of 7,112 word + 24,722 char_wb
+  features, integer df, int16 coefs per-class scale) and the 15 regex rules (Python→Unicode-aware JS) to
+  `space-static/model.js` (1.87 MB; whole Space 1.9 MB). `space-static/shora.js` re-implements the pipeline in JS.
+- Parity (`scripts/check_static_parity.py`, node 22): test set 365/365 = **100%** same binary label and scam type,
+  100% same red flags and blended verdict, max |Δp| 3.2e-5. All 1,861 messages: also 100%.
+- Published private static Space **Nihilitybot666/shora** (https://huggingface.co/spaces/Nihilitybot666/shora), RUNNING;
+  checked in a real browser (example tap, Hausa advice). Advice is pre-written per scam type in EN/PCM/YO/IG/HA;
+  scam-type names and rule-flag labels are still English only.
+- Already on the Hub (private): dataset **Nihilitybot666/naijascam**, model **Nihilitybot666/shora-tfidf**.

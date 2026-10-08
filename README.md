@@ -46,7 +46,8 @@ anywhere, and explanations people can actually read, in five Nigerian languages.
 | 📏 **NaijaScamBench** | Accuracy, macro-F1 and per-language F1 for rules, TF-IDF + LogReg, a fine-tuned African transformer, and a zero-shot LLM |
 | ⚡ **Local classifier** | TF-IDF (word + char n-grams) + logistic regression · ~4 MB · < 1 ms per message on CPU · 17-way scam-type head |
 | 🗣️ **Explainer** | Groq-hosted LLM writes the verdict and advice in EN / PCM / YO / IG / HA; falls back to offline rule-based red flags |
-| 🖥️ **Gradio app** | Hugging Face Space-ready (`app/`) |
+| 🌐 **Static web demo** | `space-static/`: the same model + rules in plain JavaScript, runs fully in the browser (nothing leaves your phone), ~1.9 MB, 100% parity with sklearn. Live as a free static Hugging Face Space |
+| 🖥️ **Gradio app** | Full app with LLM explanations (`app/`); runs locally (Gradio Spaces now need HF PRO) |
 
 ### Scam types covered
 
@@ -103,6 +104,28 @@ flowchart LR
     DS --> C
 ```
 
+## Try it
+
+**Web demo (no install):** [huggingface.co/spaces/Nihilitybot666/shora](https://huggingface.co/spaces/Nihilitybot666/shora),
+a free *static* Space. The TF-IDF + LogReg model and the red-flag rules run in your browser in plain JavaScript,
+so nothing you paste is uploaded. Pick English, Pidgin, Yorùbá, Igbo or Hausa for the advice.
+*(The Space, the dataset [`Nihilitybot666/naijascam`](https://huggingface.co/datasets/Nihilitybot666/naijascam) and the
+model repo `Nihilitybot666/shora-tfidf` are currently **private** while v0.1 is reviewed.)*
+
+Run the same page locally: open `space-static/index.html` in any browser (works from `file://`, no server, no CDN).
+
+**Rebuild the web demo** after retraining:
+
+```bash
+python scripts/export_static.py          # models/tfidf-logreg/*.joblib + src/shora/rules.py -> space-static/model.js
+python scripts/check_static_parity.py    # runs the JS engine with node on the test set vs sklearn (needs node)
+```
+
+The export keeps the shared vocabulary, integer document frequencies (idf is recomputed exactly) and int16
+coefficients with a per-class scale; Python regexes are translated to Unicode-aware JS regexes. On the 365-message
+test set the JS engine matches sklearn on **100%** of binary labels, scam types, red flags and blended verdicts
+(max probability difference ≈ 3e-5); the same holds on all 1,861 messages (train + val + test + challenge).
+
 ## Quickstart
 
 ```bash
@@ -147,7 +170,8 @@ pytest -q
 
 ```
 shora/
-├── app/                    Gradio app (Hugging Face Space-ready: app.py, requirements.txt, README.md)
+├── app/                    Gradio app with LLM explanations (app.py, requirements.txt, README.md)
+├── space-static/           static in-browser demo (index.html, app.js, shora.js engine, i18n.js, model.js)
 ├── benchmark/              NaijaScamBench results (RESULTS.md + per-model JSON & predictions)
 ├── data/
 │   ├── naijascam/          train/validation/test.jsonl, test.csv, challenge.jsonl, dataset card
@@ -155,7 +179,7 @@ shora/
 │   ├── seeds/              hand-written seeds + Tavily grounding sources
 │   └── challenge/          script that writes the hand-written challenge set
 ├── models/tfidf-logreg/    shipped baseline (~4 MB)
-├── scripts/                generate · build · train · fine-tune · evaluate · prepare_space
+├── scripts/                generate · build · train · fine-tune · evaluate · export_static · check_static_parity
 ├── src/shora/              taxonomy · rules · classifier · analyze · llm · benchmark
 └── tests/                  pytest suite (runs in GitHub Actions)
 ```
